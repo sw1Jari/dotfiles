@@ -23,6 +23,9 @@ export KEYTIMEOUT=5
 # Dotfiles git repo worktree alias
 alias config='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 
+# dwm cleanup and git reset
+alias dwmclean='make clean && rm -f config.h && git reset --hard origin/master'
+
 # Tab complete
 autoload -U compinit
 zstyle ':completion:*' menu select
