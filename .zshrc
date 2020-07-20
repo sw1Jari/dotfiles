@@ -1,8 +1,15 @@
 # sw1's Zoomer Shell config
 
-# Enable colors and change prompt
+# Prompt
 autoload -U colors && colors
-PS1="%B%{$fg[cyan]%}[%{$fg[white]%}%n%{$fg[cyan]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[cyan]%}]%{$reset_color%}$%b "
+git_branch() {
+	git symbolic-ref --short HEAD 2> /dev/null
+}
+precmd() {
+	RPROMPT="%B%{$fg[green]%}$(git_branch)%b"
+}
+setopt prompt_subst
+PROMPT="%B%{$fg[cyan]%}[%{$fg[white]%}%n%{$fg[cyan]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[cyan]%}]%{$reset_color%}$%b "
 
 # Save history in cache
 HISTFILE=~/.cache/zsh/histfile
